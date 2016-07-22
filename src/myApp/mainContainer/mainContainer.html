@@ -1,9 +1,27 @@
 <div class="jumbotron">
-  <div class="container">
-    <h1>{{greeting}}</h1>
-    <p>Contents ...</p>
-    <p>
-      <a class="btn btn-primary btn-lg">Learn more</a>
-    </p>
-  </div>
+    <div class="container">
+        <h1>{{greeting}}</h1>
+
+        <button class="btn btn-default" ng-click="newGame()">New Game</button>
+
+        <button class="btn btn-default" ng-click="doAction(actions.LEFT)">Left</button>
+        <button class="btn btn-default" ng-click="doAction(actions.RIGHT)">Right</button>
+        <button class="btn btn-default" ng-click="doAction(actions.UP)">Up</button>
+        <button class="btn btn-default" ng-click="doAction(actions.DOWN)">Down</button>
+
+        <div class="game">
+            <div class="game-row" ng-repeat="row in data.field">
+                <div class="game-cell gamecell-{{cell}}"
+                     ng-repeat="cell in row track by $index">
+                  <span ng-if="cell > 0">
+                    {{cell}}
+                  </span>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            <a class="btn btn-primary btn-lg">Learn more</a>
+        </p>
+    </div>
 </div>

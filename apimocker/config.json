@@ -5,6 +5,14 @@
   "latency": 100,
   "allowedHeaders": ["Content-Type"],
   "webServices": {
+    "game/:action": {
+        "mockFile": "responses/game/game.json",
+        "httpStatus": 200,
+        "switch": "action",
+        "verbs": [
+            "get"
+        ]
+    },
     "response/empty/ok": {
       "mockFile": "responses/empty.json",
       "httpStatus": 200,

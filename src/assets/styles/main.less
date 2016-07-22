@@ -1,12 +1,63 @@
 @import "variables";
 
 html, body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 
-  background: #faf8ef;
-  color: @text-color;
-  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
+    background: #faf8ef;
+    color: @text-color;
+    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+
+    .board {
+        td {
+            width: 50px;
+            height: 50px;
+        }
+    }
 }
 
+
+.game {
+    border: 5px solid @border-color;
+    background-color: @game-container-background;
+    display: table;
+}
+
+.game-row {
+    display: table-row;
+    height: 100px;
+}
+
+.game-cell {
+    display: table-cell;
+    border: 5px solid @border-color;
+    min-width: 100px;
+    min-height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: @tile-font;
+    font-size: 30px;
+}
+
+
+.for(@list, @code) {
+    & {
+        .loop(@i:1) when (@i =< length(@list)) {
+            @value: extract(@list, @i);
+
+            @code();
+
+            .loop(@i + 1);
+        }
+
+        .loop();
+    }
+}
+
+.for(@colors, {
+    @cellValue: pow(2, @i);
+    .gamecell-@{cellValue} {
+        background-color: @value;
+    }
+});
