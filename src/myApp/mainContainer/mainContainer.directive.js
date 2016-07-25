@@ -10,16 +10,16 @@ angular.module('myApp').directive('mainContainer', ['GameService',
 
             $scope.newGame = function() {
                 GameService.newGame().then(
-                    function(response) {
-                        $scope.data = response.data;
+                    function(data) {
+                        $scope.data = data;
                     }
                 );
             };
 
             $scope.doAction = function(action) {
                 GameService.doAction(action).then(
-                    function(response) {
-                        $scope.data = response.data;
+                    function(data) {
+                        $scope.data = data;
                     }
                 );
             }

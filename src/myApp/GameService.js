@@ -14,11 +14,21 @@ angular.module('myApp').service('GameService', function($q, $http) {
     };
 
     function newGame() {
-        return $http.get(baseUrl + '/newgame');
+        var defer = $q.defer();
+        $http.get(baseUrl + '/newgame').then(
+            function(response) {
+                defer.resolve(response.data);
+            });
+        return defer.promise;
     }
 
     function doAction(action) {
-        return $http.get(baseUrl + '/' + action);
+        var defer = $q.defer();
+        $http.get(baseUrl + '/' + action).then(
+            function(response) {
+                defer.resolve(response.data);
+            });
+        return defer.promise;
     }
 
 
